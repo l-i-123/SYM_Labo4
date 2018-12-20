@@ -3,26 +3,60 @@ package ch.heigvd.iict.sym.sym_labo4;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import ch.heigvd.iict.sym.wearcommon.Constants;
 
 public class NotificationActivity extends AppCompatActivity {
 
     private static final int NOTIFICATION_ID = 1; //code to use for the notification id
+    String id = "mon_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        TextView button = findViewById(R.id.notification_btn_display_notification);
+        final String message = "Super Notification !";
+
         if(getIntent() != null)
             onNewIntent(getIntent());
 
+
+        //Intent viewIntent = new Intent();
+
+
+
+        PendingIntent viewPendingIntent = createPendingIntent(NOTIFICATION_ID, "test");
+        final NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(this, id)
+                        .setSmallIcon(R.drawable.ic_alert_white_18dp)
+                        .setContentTitle("Attention !!!")
+                        .setContentText("Notification")
+                        .setContentIntent(viewPendingIntent);
+
+
+        final NotificationManagerCompat notificationManager =
+                NotificationManagerCompat.from(this);
+
+        //createPendingIntent(NOTIFICATION_ID, message);
+
+
         /* A IMPLEMENTER */
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+
+            }
+        });
+
 
     }
 
