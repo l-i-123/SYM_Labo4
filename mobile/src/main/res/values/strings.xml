@@ -5,5 +5,16 @@
     <string name="main_btn_application">Application</string>
 
     <string name="notification_btn_display_notification">Show notification</string>
+    <string name="btn_notification_actions_button">Notification avec action buttons</string>
+    <string name="btn_notification_wearable_only">Notification wearable only</string>
+    <string name="reply_label">test</string>
+    <string name="reponse">Répondre par SMS</string>
+    <string name="reponse2">Oui</string>
+    <string-array name="reply_choices">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Maybe</item>
+    </string-array>
+
 
 </resources>
